@@ -35,6 +35,3 @@ sub form_response {
   if ($line =~ m/\bneed\b/) {
     $line =~ s/(.*) need (.*)/Can you tell me why you need $2\?/;
   }
-  if ($line =~ m/\bhack\b/) {
-    $line =~ s/(.*) hack (.*)/Can you tell me why you hack $2\?/;
-  }
