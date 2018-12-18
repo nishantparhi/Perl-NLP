@@ -26,3 +26,12 @@ while(<>) {
   $_ =~ s/\bI\b/you/;
   form_response($_);
 }
+
+# Looks for various key words and either reworks those statements into questions or prompts the user to
+# give more information about what they said.
+sub form_response {
+  $line = $_[0];
+
+  if ($line =~ m/\bneed\b/) {
+    $line =~ s/(.*) need (.*)/Can you tell me why you need $2\?/;
+  }
