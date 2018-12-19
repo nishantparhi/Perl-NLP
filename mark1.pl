@@ -35,3 +35,30 @@ sub form_response {
   if ($line =~ m/\bneed\b/) {
     $line =~ s/(.*) need (.*)/Can you tell me why you need $2\?/;
   }
+  elsif ($line =~ m/\bwant\b/) {
+    $line =~ s/(.*) want (.*)/Why do you want $2\?/;
+  }
+  elsif ($line =~ m/likes(s)?/) {
+    $line =~ s/(.*)likes (.*)/What is the significance of liking $2\?/;
+  }
+  elsif ($line =~ m/I think/) {
+    $line =~ s/(.*)I think (.*)/Why do you think $2\?/;
+  }
+  elsif ($line =~ m/I am/) {
+    $line =~ s/(.*)I am (.*)/$name, why do you think you are $2\?/;
+  }
+  elsif ($line =~ m/([Tt]hey're|[Tt]hey are)/) {
+    $line =~ s/(.*)([Tt]hey're |[Tt]hey are )(.*)/Can you tell me why you think they are $3\?/;
+  }
+  elsif ($line =~ m/(feel|feeling)/) {
+    $line =~ s/(.*) (feel|feeling) (.*)/Hmm, what is making you feel $3\?/;
+  }
+  elsif ($line =~ m/\b(crave|craving)\b/) {
+    $line = "Why don't you tell me more about your cravings $name?";
+  }
+  elsif ($line =~ m/\bdesire(s)?\b/) {
+    $line =~ s/(.*)desire (.*)/What makes you desire $2\?/;
+  }
+  elsif ($line =~ m/love/) {
+    $line =~ s/(.*) love (.*)/Tell more more about this love you feel./;
+  }
