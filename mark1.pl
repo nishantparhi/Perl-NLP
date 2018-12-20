@@ -62,3 +62,19 @@ sub form_response {
   elsif ($line =~ m/love/) {
     $line =~ s/(.*) love (.*)/Tell more more about this love you feel./;
   }
+  # Checking for different relations one could have, and prompting the user to talk more about them.
+  elsif ($line =~ m/(friend(s)?|boyfriend|girlfriend|wife|husband|mom|dad|brother|sister)/) {
+    $line = "Can you say more about the people you are talking about?";
+  }
+  # The last elsif is a safety net to try and keep the conversation going normally.
+  elsif ($line =~ m/(problem(s?)|issue(s?)|been|keep|have)/) {
+    $line = "Tell me more about it."
+  }
+  # Eenter different input.
+  else {
+    $line = "I'm sorry $name, I didn't quite understand that.  Could you say it in a different way?";
+  }
+
+  print $line;
+  print "\n";
+}
